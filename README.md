@@ -10,5 +10,13 @@
 ## (리눅스 명령어 관련) sed 및 awk 명령어
 ### sed란?
 **sed는 유닉스에서 텍스트를 분해하거나 변환하기 위한 프로그램이다**
-
-1) 
+#### 사용법
+` sed 's/regexp/replacement/g' inputFileName > outputFileName`
+#### 기타 sed 명령어
+1. 치환 외에도 25개의 sed 명령을 사용하여 다른 형태의 단순한 처리가 가능하다. 이를테면, 다음의 경우 d 명령어를 사용하여 비어있거나 공백만 포함하는 줄을 삭제한다
+`sed '/^ *$/d' inputFileName`
+2. 필터로서의 사용 -유닉스에서 sed는 파이프 안에 필터로 종종 사용된다.
+`generateData | sed 's/x/y/g'`
+3.파일 기반 sed 스크립트 - 한 줄에 하나의 명령으로 여러 sed 명령을 subst.sed와 같은 스크립트 파일 안에 넣으면 유용할 수 있으며 -f 옵션을 사용하면 파일로부터 s/x/y/g와 같은 명령을 실행할 수 있다.
+`sed -f subst.sed inputFileName > outputFileName`
+### awk란?
